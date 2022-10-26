@@ -1,0 +1,34 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: redis
+  jackson:
+    time-zone: GMT+8
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://47.99.243.32:3306/geo?useUnicode=true&useSSL=false&characterEncoding=utf8
+      username: root
+      password: 123456
+  redis:
+    cluster:
+      nodes: 192.168.0.90:6379,192.168.0.91:6379,192.168.0.92:6379
+    password: 123456
+    timeout: 10s
+    jedis:
+      pool:
+        max-active: 3
+        max-idle: 6
+        min-idle: 1
+        max-wait: 500ms
+    database: 0
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 50
+        queue-capacity: 200
+        keep-alive: 60s
+      thread-name-prefix: mew-

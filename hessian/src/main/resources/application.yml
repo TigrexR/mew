@@ -1,0 +1,15 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: hessian
+  jackson:
+    time-zone: GMT+8
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 50
+        queue-capacity: 200
+        keep-alive: 60s
+      thread-name-prefix: geo-

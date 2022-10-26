@@ -1,0 +1,30 @@
+package com.tigrex.mew.api.feign;
+
+import com.tigrex.mew.entity.dto.UserDTO;
+import com.tigrex.mew.entity.query.UserQuery;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * @author linus
+ */
+@FeignClient(value = "geo", contextId = "userClient", path = "/user")
+public interface UserClient {
+
+    /**
+     * hello
+     * @return string
+     */
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+	String hello();
+
+    /**
+     * get user
+     * @param userQuery
+     * @return user
+     */
+    @RequestMapping(value = "/getUser", method = RequestMethod.POST)
+    UserDTO getUser(@RequestBody() UserQuery userQuery);
+}
